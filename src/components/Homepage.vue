@@ -23,7 +23,8 @@ export default {
     ...mapActions('suggestions', ['loadSuggestions'])
   },
   computed: {
-    ...mapState('suggestions', ['allData'])
+    ...mapState('suggestions', ['allData']),
+    ...mapState('suggestions', ['selectItems'])
   },
   mounted () {
     this.loadSuggestions()

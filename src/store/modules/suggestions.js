@@ -2,12 +2,19 @@ import axios from 'axios'
 
 // initial state
 const state = {
-  allData: {}
+  allData: {},
+  selectItems: []
 }
 
 // getters
 const getters = {
   getDefaultCount: (state) => (id) => {
+    return Math.ceil(state.allData.limits[id])
+  },
+  getSelectClass: (state) => (id) => {
+    return Math.ceil(state.allData.limits[id])
+  },
+  getSeelctItemsByClass: (state) => (id) => {
     return Math.ceil(state.allData.limits[id])
   }
 }
@@ -29,6 +36,16 @@ const actions = {
 const mutations = {
   setAllData (state, data) {
     state.allData = data
+  },
+  addNewSelect (state, data) {
+    state.selectItems.push(data)
+  },
+  removeSelect (state, data) {
+    state.selectItems.forEach((element, index) => {
+      if (element.id === data.id) {
+        state.selectItems.splice(index, 1)
+      }
+    })
   }
 }
 
